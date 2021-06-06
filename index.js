@@ -1,7 +1,6 @@
-if (data.text == "!text" && adminList.includes(String(userId))) {
-        let bend = chat.rawAttachment.src_userId;
-        client.open.kickUser(chat.channel, bend);
-        channel.sendChat(new node_kakao_1.ChatBuilder().append(new node_kakao_1.MentionContent(userInfo)).text("님, 킥완료").build(1));
-	}
-
-//아직 테스트 안해서 될지 안될지 모릅니다.//
+ if (data.text == "!가리기"  &&adminList.includes(String(userId))) {
+        channel.hideChat(data.chat);
+        channel.hideChat(new node_kakao.ChatBuilder().attachment({ logId: data.attachment().src_logId }).build({ logId: data.attachment().src_logId, type: data.attachment().src_type }));
+        channel.sendChat(`완료`)
+    }
+//가리기 명령어 사용시 가리고 싶은 문장,단어를 가리고 가리기 명령어도 가랍니다.
